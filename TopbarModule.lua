@@ -45,6 +45,11 @@ Module:AddAmount([Button Name : String*],[Amount : Int*])
 Module:RemoveAmount([Button Name : String*],[Amount : Int*])
 - Will remove the amount to the notification values
 -- Will return true if success, or false if there was an error
+
+Module:ConfigButton([Button Name : String*],[Config Table : Table*])
+- Will Configure the button with the given table
+-- Will return false if error, will return nothing if success
+--- View Config table on DevForum Post
 --]]
 
 local RunService = game:GetService("RunService")
