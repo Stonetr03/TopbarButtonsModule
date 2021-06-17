@@ -11,7 +11,7 @@ More info on the devforum post,
 
 API :
 
-Module:Add([Button Name : String*],[Image : ImageId*],[Left : true])
+Module:Add([Button Name : String*],[Image : ImageId*],[Left : true],[Config Table : Table])
 - Addes a button to the topbar button with the given imageId
 -- Will return value of the button, or false if there was an error
 
