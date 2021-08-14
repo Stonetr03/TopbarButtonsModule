@@ -1,6 +1,6 @@
 --[[ Stonetr03 Studios
 
-Made by Stonetr03 Studios - v4.0.0
+Made by Stonetr03 Studios - v4.0.1
 Topbar, This creates Custom top bar buttons
 -- Works on Client or Server, for client the
 moduel script has to be in Replicated storage
@@ -64,7 +64,7 @@ function TopbarModule:ConfigButton(ButtonName,CustomizeSettings)
 	if typeof(CustomizeSettings) == "table" then
 		local Player = game.Players.LocalPlayer
 		local TopbarFrame = Player.PlayerGui:FindFirstChild("TopbarGUI")
-		
+
 		local Button
 		if TopbarFrame ~= nil then
 			local CheckLeft = TopbarFrame.TopbarFrame.Left:FindFirstChild(ButtonName)
@@ -83,11 +83,11 @@ function TopbarModule:ConfigButton(ButtonName,CustomizeSettings)
 			warn("Topbar Gui missing, Have you created any buttons yet?")
 			return false
 		end
-		
+
 		if typeof(CustomizeSettings.Width) == "UDim" then
 			Button.Size = UDim2.new(CustomizeSettings.Width.Scale,CustomizeSettings.Width.Offset,0,32)
 		end
-		
+
 		if typeof(CustomizeSettings.ScaleType) == "EnumItem" then
 			pcall(function()
 				Button.IconButton.IconImage.ScaleType = CustomizeSettings.ScaleType
@@ -109,7 +109,7 @@ function TopbarModule:ConfigButton(ButtonName,CustomizeSettings)
 				Button.IconButton.IconImage.ImageColor3 = CustomizeSettings.IconColor
 			end)
 		end
-		
+
 		return
 	end
 	return
@@ -144,7 +144,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBUI.Enabled = true
 						TBUI.IgnoreGuiInset = true
 						TBUI.ResetOnSpawn = false
-						
+
 						local TBFrame = Instance.new("Frame")
 						TBFrame.Parent = TBUI
 						TBFrame.BackgroundTransparency = 1
@@ -152,7 +152,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBFrame.Name = "TopbarFrame"
 						TBFrame.Size = UDim2.new(1,0,0,36)
 						TBFrame.ZIndex = 1000000000
-						
+
 						local TBL = Instance.new("Frame")
 						TBL.Parent = TBFrame
 						TBL.BackgroundTransparency = 1
@@ -160,7 +160,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBL.Name = "Left"
 						TBL.Position = UDim2.new(0,104,0,4)
 						TBL.Size = UDim2.new(0.85,0,0,32)
-						
+
 						local TBR = Instance.new("Frame")
 						TBR.Parent = TBFrame
 						TBR.BackgroundTransparency = 1
@@ -169,7 +169,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBR.AnchorPoint = Vector2.new(1,0)
 						TBR.Position = UDim2.new(1,-60,0,4)
 						TBR.Size = UDim2.new(0.85,0,0,32)
-						
+
 						local TBLUI = Instance.new("UIListLayout")
 						TBLUI.Parent = TBL
 						TBLUI.Padding = UDim.new(0,12)
@@ -177,7 +177,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBLUI.HorizontalAlignment = Enum.HorizontalAlignment.Left
 						TBLUI.SortOrder = Enum.SortOrder.LayoutOrder
 						TBLUI.VerticalAlignment = Enum.VerticalAlignment.Top
-						
+
 						local TBRUI = Instance.new("UIListLayout")
 						TBRUI.Parent = TBR
 						TBRUI.Padding = UDim.new(0,12)
@@ -185,7 +185,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						TBRUI.HorizontalAlignment = Enum.HorizontalAlignment.Right
 						TBRUI.SortOrder = Enum.SortOrder.LayoutOrder
 						TBRUI.VerticalAlignment = Enum.VerticalAlignment.Top
-						
+
 						RunService.RenderStepped:Connect(function()
 							if GuiService.MenuIsOpen == true then
 								TBFrame.Visible = false
@@ -205,7 +205,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						NewButton.BorderSizePixel = 0
 						NewButton.Position = UDim2.new(0,104,0,4)
 						NewButton.Size = UDim2.new(0,32,0,32)
-						
+
 						local IconButton = Instance.new("ImageButton")
 						IconButton.Parent = NewButton
 						IconButton.BackgroundTransparency = 1
@@ -215,7 +215,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						IconButton.Image = "rbxasset://textures/ui/TopBar/iconBase.png"
 						IconButton.ScaleType = Enum.ScaleType.Slice
 						IconButton.SliceCenter = Rect.new(Vector2.new(10,10),Vector2.new(10,10))
-						
+
 						local BadgeContainer = Instance.new("Frame")
 						BadgeContainer.Parent = IconButton
 						BadgeContainer.BackgroundTransparency = 1
@@ -223,14 +223,14 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						BadgeContainer.Name = "BadgeContainer"
 						BadgeContainer.ZIndex = 5
 						BadgeContainer.Visible = false
-						
+
 						local Badge = Instance.new("Frame")
 						Badge.Parent = BadgeContainer
 						Badge.BackgroundTransparency = 1
 						Badge.Name = "Badge"
 						Badge.Position = UDim2.new(0,18,0,-2)
 						Badge.Size = UDim2.new(0,24,0,24)
-						
+
 						local BadgeBG = Instance.new("ImageLabel")
 						BadgeBG.Parent = Badge
 						BadgeBG.BackgroundTransparency = 1
@@ -243,7 +243,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						BadgeBG.ImageRectSize = Vector2.new(25,25)
 						BadgeBG.ScaleType = Enum.ScaleType.Slice
 						BadgeBG.SliceCenter = Rect.new(Vector2.new(14,14),Vector2.new(15,15))
-						
+
 						local Inner = Instance.new("ImageLabel")
 						Inner.Parent = Badge
 						Inner.AnchorPoint = Vector2.new(0.5,0.5)
@@ -257,7 +257,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						Inner.ImageRectSize = Vector2.new(21,21)
 						Inner.ScaleType = Enum.ScaleType.Slice
 						Inner.SliceCenter = Rect.new(Vector2.new(14,14),Vector2.new(15,15))
-						
+
 						local InnerTL = Instance.new("TextLabel")
 						InnerTL.Parent = Inner
 						InnerTL.BackgroundTransparency = 1
@@ -267,7 +267,7 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						InnerTL.Text = "0"
 						InnerTL.TextColor3 = Color3.fromRGB(57, 59, 61)
 						InnerTL.TextSize = 14
-						
+
 						local IconImg = Instance.new("ImageLabel")
 						IconImg.Parent = IconButton
 						IconImg.AnchorPoint = Vector2.new(0.5,0.5)
@@ -278,8 +278,9 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						IconImg.ZIndex = 3
 						IconImg.Image = "rbxasset://textures/ui/TopBar/coloredlogo.png"
 						IconImg.ScaleType = Enum.ScaleType.Fit
-						
+
 						local DropDown = Instance.new("ImageLabel")
+						DropDown.Name = "Dropdown"
 						DropDown.Parent = NewButton
 						DropDown.AnchorPoint = Vector2.new(0.5,0)
 						DropDown.BackgroundTransparency = 1
@@ -288,14 +289,19 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						DropDown.Image = "rbxasset://textures/ui/TopBar/iconBase.png"
 						DropDown.ScaleType = Enum.ScaleType.Slice
 						DropDown.SliceCenter =  Rect.new(Vector2.new(10,10),Vector2.new(10,10))
+						DropDown.Visible = false
 						
+						IconButton.MouseButton2Up:Connect(function()
+							DropDown.Visible = not DropDown.Visible
+						end)
+
 						local DropList = Instance.new("UIListLayout")
 						DropList.Parent = DropDown
 						DropList.FillDirection = Enum.FillDirection.Vertical
 						DropList.HorizontalAlignment = Enum.HorizontalAlignment.Left
 						DropList.SortOrder = Enum.SortOrder.LayoutOrder
 						DropList.VerticalAlignment = Enum.VerticalAlignment.Top
-						
+
 						pcall(function()
 							NewButton.IconButton.IconImage.Image = Image
 						end)
@@ -304,11 +310,11 @@ function TopbarModule:Add(ButtonName,Image,Left,CustomizeSettings)
 						else
 							NewButton.Parent = TopbarFrame.TopbarFrame.Right
 						end
-						
+
 						if typeof(CustomizeSettings) == "table" then
 							TopbarModule:ConfigButton(ButtonName,CustomizeSettings)
 						end
-						
+
 						return NewButton.IconButton
 					else
 						-- Name already in use
@@ -591,13 +597,14 @@ function TopbarModule:CreateDropdownButton(DropdownButtonName,TopbarButtonName,T
 					NewUI.Text = Text
 					NewUI.TextSize = 15
 					NewUI.Name = DropdownButtonName
+					NewUI.TextColor3 = Color3.new(1,1,1)
 					wait()
 					Button.Dropdown.Size = UDim2.new(0,Button.Dropdown.Size.X.Offset,0,Button.Dropdown.Size.Y.Offset + 25)
 					NewUI.Parent = Button.Dropdown
 					if NewUI.TextFits == false then
 						repeat
-							Button.Dropdown.Size = UDim2.new(0,Button.Dropdown.Size.X.Offset + 1,0,Button.Dropdown.Size.Y.Offset)
-							wait()
+							Button.Dropdown.Size = UDim2.new(0,Button.Dropdown.Size.X.Offset + 2,0,Button.Dropdown.Size.Y.Offset)
+							wait(0.0000000001)
 						until NewUI.TextFits == true
 						Button.Dropdown.Size = UDim2.new(0,Button.Dropdown.Size.X.Offset + 8,0,Button.Dropdown.Size.Y.Offset)
 					end
@@ -796,3 +803,4 @@ function TopbarModule:ResetDropdownSize(ButtonName)
 end
 
 return TopbarModule
+
